@@ -1,0 +1,48 @@
+.container {
+  display: grid;
+  gap: 1rem;
+  width: 75%;
+  margin-left: 12.5%;
+  margin-bottom: 5%;
+
+  .submit {
+    display: flex;
+    gap: 1rem;
+  }
+  .success,
+  .error {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
+    display: none;
+  }
+  .success {
+    color: green;
+  }
+
+  .error {
+    color: red;
+  }
+  .response,
+  .request {
+    display: flex;
+    flex-direction: column;
+    textarea {
+      border-radius: clamp(0.5rem, 0.5vw, 0.75rem);
+      outline: none;
+      border: 1px solid grey;
+      padding: 0.65rem;
+    }
+  }
+
+  label {
+    height: fit-content;
+    margin: 1rem;
+  }
+
+  button {
+    width: fit-content;
+    height: fit-content;
+  }
+}

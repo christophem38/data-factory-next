@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+.navbar {
+  width: 80%;
+  margin-left: 10%;
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-left: 0;
+  }
+  a {
+    width: fit-content;
+  }
+}
+
+.primary-nav {
+  display: grid;
+  grid-template-columns: min-content auto;
+}
+
+.primary-nav .logo {
+  padding: clamp(35px, 1vmax, 75px);
+  img {
+    width: clamp(2rem, 6vw, 3rem);
+    height: clamp(2rem, 6vw, 3rem);
+  }
+}
+
+.navlist-container {
+  display: flex;
+  justify-self: flex-end;
+  justify-content: space-between;
+  @media (max-width: 980px) {
+    display: none;
+  }
+  ul {
+    align-self: center;
+    justify-self: end;
+    display: flex;
+    margin-right: 2rem;
+  }
+
+  a {
+    padding: 0 clamp(20px, 1rem, 10%);
+  }
+  li {
+    color: var(--text-color);
+  }
+
+  li:hover {
+    color: var(--color-primary);
+  }
+}
+
+.primary-nav ul li {
+  font-weight: 400;
+  font-size: clamp(20px, 1.12vw, 55px);
+}
+
+.theme {
+  grid-column: 2/3;
+  align-self: center;
+  justify-self: end;
+  margin-right: 2rem;
+  @media (max-width: 980px) {
+    display: flex;
+  }
+  img {
+    width: clamp(1.9rem, 2vw, 2rem);
+    height: clamp(1.9rem, 2vw, 2rem);
+    cursor: pointer;
+  }
+}
+
+.hamburger {
+  display: none;
+  position: relative;
+  align-self: center;
+  justify-self: end;
+  margin-right: 2rem;
+  @media (max-width: 980px) {
+    display: flex;
+    width: 40%;
+    min-width: 80px;
+    max-width: 120px;
+    justify-content: space-between;
+  }
+  img {
+    width: clamp(1.9rem, 5vw, 3rem);
+    height: clamp(1.9rem, 5vw, 3rem);
+    cursor: pointer;
+  }
+}
+
+.hidden-navbar {
+  position: absolute;
+  z-index: 3;
+  background: linear-gradient(#205295cc, #144272cc);
+  background-color: #205295cc;
+  color: white;
+  top: 150%;
+  right: 0;
+  border-radius: clamp(0.5rem, 0.4vw, 0.75rem);
+  ul {
+    padding: clamp(1.5rem, 4vw, 2rem);
+    li {
+      padding: 1rem;
+      border-bottom: 1px solid rgba($color: #ffffff, $alpha: 0.3);
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      &:hover {
+        color: rgb(182, 211, 254);
+      }
+    }
+  }
+}

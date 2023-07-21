@@ -1,0 +1,47 @@
+.container {
+  display: grid;
+  gap: 1rem;
+  width: 75%;
+  margin-left: 12.5%;
+  margin-bottom: 5%;
+}
+.container .submit {
+  display: flex;
+  gap: 1rem;
+}
+.container .success,
+.container .error {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  align-items: center;
+  display: none;
+}
+.container .success {
+  color: green;
+}
+.container .error {
+  color: red;
+}
+.container .response,
+.container .request {
+  display: flex;
+  flex-direction: column;
+}
+.container .response textarea,
+.container .request textarea {
+  border-radius: clamp(0.5rem, 0.5vw, 0.75rem);
+  outline: none;
+  border: 1px solid grey;
+  padding: 0.65rem;
+}
+.container label {
+  height: fit-content;
+  margin: 1rem;
+}
+.container button {
+  width: fit-content;
+  height: fit-content;
+}
+
+/*# sourceMappingURL=translate.module.css.map */
