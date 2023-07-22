@@ -39,9 +39,11 @@ export default function Translate() {
   const [request, setRequest] = useState("");
   const [targetLang, setTargetLang] = useState("eng");
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoadUI('flex');
     const data = { query: request, to: targetLang, user: 1 };
+    e.preventDefault()
+    e.target.querySelector('select').value = ''
+    setLoadUI('flex');
+    
     try {
       const resp = await fetch(
         process.env["NEXT_PUBLIC_BACKEND_URL"].concat("/api/Translations/"),

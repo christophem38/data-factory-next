@@ -1,9 +1,7 @@
 import Navbar from '@/components/Navbar/Navbar'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import {ibm_plex_s} from './fonts'
 
 export const metadata: Metadata = {
   title: 'Data Factory AI Tools - Test Server',
@@ -17,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={ibm_plex_s.className}>
         <Navbar/>
         {children}
       </body>
