@@ -79,10 +79,6 @@
   margin-right: 2rem;
   @media (max-width: 980px) {
     display: flex;
-    width: 40%;
-    min-width: 80px;
-    max-width: 120px;
-    justify-content: space-between;
   }
   img {
     width: clamp(1.9rem, 5vw, 3rem);

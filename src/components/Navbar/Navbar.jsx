@@ -3,6 +3,8 @@
 import styles from "./Navbar.module.css";
 import { useEffect, useState } from "react";
 import logo from "@/images/data-factory-logo.jpeg";
+import bars from "@/images/bars.svg";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +22,9 @@ export default function Navbar() {
     <>
       <nav className={[styles["primary-nav"], styles.navbar].join(" ")}>
         <a href="/acceuil">
-          <div className={styles["logo"]}></div>
+          <div className={styles["logo"]}>
+            <Image src={logo} alt="" height={30} />
+          </div>
         </a>
         <div className={styles["navlist-container"]}>
           <ul>
@@ -30,12 +34,14 @@ export default function Navbar() {
           </ul>
         </div>
         <div className={[styles.hamburger]}>
-          <span onClick={() => setIsOpen(!isOpen)}>miam</span>
+          <span onClick={() => setIsOpen(!isOpen)}>
+            <Image src={bars} alt="bars" />
+          </span>
           {isOpen && (
             <div className={styles["hidden-navbar"]}>
               <ul>
-                <a href="/services">
-                  <li>Services</li>
+                <a href="/">
+                  <li>Acceuil</li>
                 </a>
               </ul>
             </div>

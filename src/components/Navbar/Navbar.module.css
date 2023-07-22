@@ -9,7 +9,6 @@
   }
 }
 .navbar a {
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -84,10 +83,6 @@
 @media (max-width: 980px) {
   .hamburger {
     display: flex;
-    width: 40%;
-    min-width: 80px;
-    max-width: 120px;
-    justify-content: space-between;
   }
 }
 .hamburger img {
@@ -117,3 +112,5 @@
 .hidden-navbar ul li:hover {
   color: rgb(182, 211, 254);
 }
+
+/*# sourceMappingURL=Navbar.module.css.map */

@@ -29,7 +29,6 @@ const toggleErrorUI = () => {
   }, 2000);
 };
 
-
 const toggleSuccessUI = () => {
   let container = document.querySelector(".".concat(styles.success));
   container.style.display = "flex";
@@ -38,12 +37,11 @@ const toggleSuccessUI = () => {
   }, 2000);
 };
 
-
-
 export default function Translate() {
   const [request, setRequest] = useState("");
+  const [targetLang, setTargetLang] = useState("eng");
   const handleSubmit = async () => {
-    const data = { query: request, user: 1 };
+    const data = { query: request, to: targetLang, user: 1 };
     try {
       const resp = await fetch("http://localhost:8000/api/Translations/", {
         method: "post",
@@ -72,14 +70,33 @@ export default function Translate() {
     <>
       <div className={styles.container}>
         <div className={styles.fields}>
-          <div className={styles.request}>
-            <label htmlFor="request">Texte à traduire :</label>
+          <form className={styles.request}>
+            <div className={styles['select-container']}>
+              <label htmlFor="request">Texte à traduire :</label>
+              <select
+                name="to"
+                id="to"
+                required={true}
+                onChange={(e) => setTargetLang(e.target.value)}
+              >
+                <option value="">
+                  ------ Choisir la langue de votre traduction ------
+                </option>
+                <option value="eng">Anglais</option>
+                <option value="fr">Francais</option>
+                <option value="it">Italien</option>
+                <option value="es">Espagnol</option>
+                <option value="cn">Chinois</option>
+                <option value="jp">Japonais</option>
+                <option value="ar">Arabe</option>
+              </select>
+            </div>
             <textarea
               onChange={(e) => setRequest(e.target.value)}
               cols={30}
               rows={10}
             />
-          </div>
+          </form>
 
           <div className={styles.response}>
             <label htmlFor="response">Traduction :</label>
@@ -87,7 +104,9 @@ export default function Translate() {
           </div>
         </div>
         <div className={styles.submit}>
-          <button onClick={() => handleSubmit()}>Traduire</button>
+          <button type="submit" onClick={() => handleSubmit()}>
+            Traduire
+          </button>
           <div className={styles.status}>
             <div className={[styles.success].join(" ")}>
               <Image src={successImg} alt="success" height={20} />

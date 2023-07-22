@@ -36,13 +36,34 @@
     }
   }
 
+  .select-container {
+    margin: 1rem 0;
+    select {
+      padding: 0.75rem;
+      border-radius: clamp(0.5rem, 0.3vw, 0.75rem);
+      font-size: clamp(0.75rem, 2vw, 1rem);
+    }
+  }
+
   label {
     height: fit-content;
     margin: 1rem;
   }
 
   button {
+    margin-right: 1rem;
+    border: none;
+    padding: 0.5rem 0.75rem;
+    font-size: clamp(0.75rem, 3vw, 1rem);
+    border-radius: clamp(0.5rem, 0.3vw, 0.75rem);
+    font-weight: 700;
+    background-color: rgba(0, 129, 201, 1);
+    color: whitesmoke;
     width: fit-content;
     height: fit-content;
+
+    &:hover {
+      background-color: rgba(0, 129, 201, 0.7);
+    }
   }
 }
