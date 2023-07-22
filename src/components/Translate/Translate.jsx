@@ -21,26 +21,25 @@ const getCookie = (name) => {
   return cookieValue;
 };
 
-const toggleErrorUI = () => {
-  let container = document.querySelector(".".concat(styles.error));
+const toggleStatusUI = (status) => {
+  setLoadUI('none')
+  let container = document.querySelector(".".concat(status));
   container.style.display = "flex";
   setTimeout(() => {
     container.style.display = "none";
   }, 2000);
 };
 
-const toggleSuccessUI = () => {
-  let container = document.querySelector(".".concat(styles.success));
-  container.style.display = "flex";
-  setTimeout(() => {
-    container.style.display = "none";
-  }, 2000);
+const setLoadUI = (display) => {
+  let container = document.querySelector(".".concat(styles.load));
+  container.style.display = display;
 };
 
 export default function Translate() {
   const [request, setRequest] = useState("");
   const [targetLang, setTargetLang] = useState("eng");
   const handleSubmit = async () => {
+    setLoadUI('flex');
     const data = { query: request, to: targetLang, user: 1 };
     try {
       const resp = await fetch(
@@ -62,10 +61,10 @@ export default function Translate() {
         ".".concat(styles.response, " textarea"),
       );
       inputField.value = response.result;
-      toggleSuccessUI();
+      toggleStatusUI(styles.success);
     } catch (err) {
       console.log(err);
-      toggleErrorUI();
+      toggleStatusUI(styles.error);
     }
   };
 
@@ -111,6 +110,10 @@ export default function Translate() {
             Traduire
           </button>
           <div className={styles.status}>
+            <div className={[styles.load].join(" ")}>
+              <div className={styles["spinner"]}></div>
+              <h5>Traduction en cours ......</h5>
+            </div>
             <div className={[styles.success].join(" ")}>
               <Image src={successImg} alt="success" height={20} />
               <h5>La traduction a été réalisé avec succès !</h5>
