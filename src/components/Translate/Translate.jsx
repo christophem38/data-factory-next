@@ -43,17 +43,20 @@ export default function Translate() {
   const handleSubmit = async () => {
     const data = { query: request, to: targetLang, user: 1 };
     try {
-      const resp = await fetch("http://localhost:8000/api/Translations/", {
-        method: "post",
-        body: JSON.stringify(data),
-        credentials: "same-origin",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "X-CSRFToken": getCookie("csrftoken"),
-          Authorization: "Basic " + btoa("root:root"),
+      const resp = await fetch(
+        process.env["NEXT_PUBLIC_BACKEND_URL"].concat("/api/Translations/"),
+        {
+          method: "post",
+          body: JSON.stringify(data),
+          credentials: "same-origin",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCookie("csrftoken"),
+            Authorization: "Basic " + btoa("root:root"),
+          },
         },
-      });
+      );
       const response = await resp.json();
       let inputField = document.querySelector(
         ".".concat(styles.response, " textarea"),
@@ -71,7 +74,7 @@ export default function Translate() {
       <div className={styles.container}>
         <div className={styles.fields}>
           <form className={styles.request}>
-            <div className={styles['select-container']}>
+            <div className={styles["select-container"]}>
               <label htmlFor="request">Texte à traduire :</label>
               <select
                 name="to"
