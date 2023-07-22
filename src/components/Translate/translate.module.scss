@@ -10,11 +10,12 @@
     gap: 1rem;
   }
   .success,
-  .error {
+  .error,
+  .load {
     display: flex;
     gap: 1rem;
-    flex-direction: row;
     align-items: center;
+    font-size: clamp(0.75rem, 3vw, 1rem);
     display: none;
   }
   .success {
@@ -70,13 +71,6 @@
 }
 
 // Loader
-
-.load {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  display: none;
-}
 
 .spinner {
   width: 2em;

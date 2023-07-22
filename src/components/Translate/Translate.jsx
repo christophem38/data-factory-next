@@ -21,9 +21,9 @@ const getCookie = (name) => {
   return cookieValue;
 };
 
-const toggleStatusUI = (status) => {
+const toggleStatusUI = (statusClassName) => {
   setLoadUI('none')
-  let container = document.querySelector(".".concat(status));
+  let container = document.querySelector(".".concat(statusClassName));
   container.style.display = "flex";
   setTimeout(() => {
     container.style.display = "none";
@@ -38,7 +38,8 @@ const setLoadUI = (display) => {
 export default function Translate() {
   const [request, setRequest] = useState("");
   const [targetLang, setTargetLang] = useState("eng");
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     setLoadUI('flex');
     const data = { query: request, to: targetLang, user: 1 };
     try {
@@ -70,9 +71,9 @@ export default function Translate() {
 
   return (
     <>
-      <div className={styles.container}>
+      <form className={styles.container} onSubmit={handleSubmit}>
         <div className={styles.fields}>
-          <form className={styles.request}>
+          <div className={styles.request}>
             <div className={styles["select-container"]}>
               <label htmlFor="request">Texte à traduire :</label>
               <select
@@ -98,15 +99,15 @@ export default function Translate() {
               cols={30}
               rows={10}
             />
-          </form>
+          </div>
 
           <div className={styles.response}>
             <label htmlFor="response">Traduction :</label>
-            <textarea readOnly cols={30} rows={10} />
+            <textarea readOnly cols={30} rows={10} required={true} />
           </div>
         </div>
         <div className={styles.submit}>
-          <button type="submit" onClick={() => handleSubmit()}>
+          <button type="submit">
             Traduire
           </button>
           <div className={styles.status}>
@@ -124,7 +125,7 @@ export default function Translate() {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </>
   );
 }

@@ -10,11 +10,12 @@
   gap: 1rem;
 }
 .container .success,
-.container .error {
+.container .error,
+.container .load {
   display: flex;
   gap: 1rem;
-  flex-direction: row;
   align-items: center;
+  font-size: clamp(0.75rem, 3vw, 1rem);
   display: none;
 }
 .container .success {
@@ -62,13 +63,6 @@
 }
 .container button:hover {
   background-color: rgba(0, 129, 201, 0.7);
-}
-
-.load {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  display: none;
 }
 
 .spinner {
