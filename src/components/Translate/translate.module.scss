@@ -13,10 +13,12 @@
   .error,
   .load {
     display: flex;
-    gap: 1rem;
     align-items: center;
     font-size: clamp(0.75rem, 3vw, 1rem);
     display: none;
+    & > * {
+      margin: 0 1rem 1rem 0;
+    }
   }
   .success {
     color: green;
