@@ -17,7 +17,7 @@ export default function Navbar() {
   var token
   useEffect(() => {
     if (typeof window != undefined) {
-      token = localStorage.getItem('auth_token')
+      token = window.localStorage.getItem('auth_token')
       window.addEventListener("resize", (e) => {
         let width = e.target.innerWidth;
         if (width > 980) setIsOpen(false);
