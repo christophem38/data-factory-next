@@ -14,10 +14,10 @@ const logoutUser = () => {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  var token
+  let token
   useEffect(() => {
     if (typeof window != undefined) {
-      token = window.localStorage.getItem('auth_token')
+      token = localStorage.getItem('auth_token')
       window.addEventListener("resize", (e) => {
         let width = e.target.innerWidth;
         if (width > 980) setIsOpen(false);
