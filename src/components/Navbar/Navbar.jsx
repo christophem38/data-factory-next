@@ -4,7 +4,13 @@ import styles from "./Navbar.module.css";
 import { useEffect, useState } from "react";
 import logo from "@/images/data-factory-logo.jpeg";
 import bars from "@/images/bars.svg";
+import logout from "@/images/logout-svgrepo-com.svg";
 import Image from "next/image";
+
+const logoutUser = () => {
+  localStorage.clear();
+  window.location.assign("/");
+};
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,8 +35,23 @@ export default function Navbar() {
         <div className={styles["navlist-container"]}>
           <ul>
             <a href="/acceuil">
+              <li>Acceuil</li>
+            </a>
+            <a href="/traducteur">
               <li>Traducteur</li>
             </a>
+            {localStorage.getItem("auth_token") && (
+              <a onClick={logoutUser}>
+                <li>
+                  <Image src={logout} height={25} alt="deconnexion" />
+                </li>
+              </a>
+            )}
+            {!localStorage.getItem("auth_token") && (
+              <a href="/connexion">
+                <li>Se connecter</li>
+              </a>
+            )}
           </ul>
         </div>
         <div className={[styles.hamburger]}>
@@ -43,6 +64,19 @@ export default function Navbar() {
                 <a href="/">
                   <li>Acceuil</li>
                 </a>
+                <a href="/traducteur">
+                  <li>Traducteur</li>
+                </a>
+                {localStorage.getItem("auth_token") && (
+                  <a onClick={logoutUser}>
+                    <li>Déconnexion</li>
+                  </a>
+                )}
+                {!localStorage.getItem("auth_token") && (
+                  <a href="/connexion">
+                    <li>Connexion</li>
+                  </a>
+                )}
               </ul>
             </div>
           )}

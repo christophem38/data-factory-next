@@ -1,0 +1,26 @@
+.home-container {
+  width: 75%;
+  margin-left: 12.5%;
+  margin-top: 2rem;
+  h1,
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-weight: 400;
+  }
+
+  p {
+    line-height: 177%;
+    width: 65%;
+  }
+
+  h2 {
+    font-weight: 200;
+  }
+}
+
+.title {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+}
