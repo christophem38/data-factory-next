@@ -1,0 +1,33 @@
+.auth-container {
+  with: 50%;
+  margin-left: 25%;
+  margin-top: 2rem;
+}
+.auth-container h1 {
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.auth-container .form .username,
+.auth-container .form .password {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.auth-container .form input {
+  padding: 0.65rem;
+  border-radius: clamp(0.5rem, 0.5vw, 0.75rem);
+  border: 1px solid black;
+}
+.auth-container .form label {
+  margin-bottom: 0.5rem;
+}
+.auth-container .status {
+  margin-bottom: 1rem;
+  display: none;
+}
+.auth-container .status .error {
+  color: tomato;
+}
+
+/*# sourceMappingURL=connexion.module.css.map */

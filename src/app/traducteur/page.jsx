@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./translate.module.css";
 import Image from "next/image";
 import successImg from "@/images/success-player-multimedia-svgrepo-com.svg";
 import errorImg from "@/images/error-outline-svgrepo-com.svg";
+import TranslateHeader from "@/components/TranslateHeader/TranslateHeader";
+
 
 const getCookie = (name) => {
   var cookieValue = null;
@@ -22,7 +24,7 @@ const getCookie = (name) => {
 };
 
 const toggleStatusUI = (statusClassName) => {
-  setLoadUI('none')
+  setLoadUI("none");
   let container = document.querySelector(".".concat(statusClassName));
   container.style.display = "flex";
   setTimeout(() => {
@@ -36,14 +38,20 @@ const setLoadUI = (display) => {
 };
 
 export default function Translate() {
+  useEffect(() => {
+    const token = window.localStorage.getItem("auth_token");
+    if (!token) {
+      window.location.assign("/connexion");
+    }
+  }, []);
   const [request, setRequest] = useState("");
   const [targetLang, setTargetLang] = useState("eng");
   const handleSubmit = async (e) => {
     const data = { query: request, to: targetLang, user: 1 };
-    e.preventDefault()
-    e.target.querySelector('select').value = ''
-    setLoadUI('flex');
-    
+    e.preventDefault();
+    e.target.querySelector("select").value = "";
+    setLoadUI("flex");
+
     try {
       const resp = await fetch(
         process.env["NEXT_PUBLIC_BACKEND_URL"].concat("/api/Translations/"),
@@ -55,7 +63,7 @@ export default function Translate() {
             Accept: "application/json",
             "Content-Type": "application/json",
             "X-CSRFToken": getCookie("csrftoken"),
-            Authorization: "Basic " + btoa("root:root"),
+            Authorization: "Token " + localStorage.getItem("auth_token"),
           },
         },
       );
@@ -73,6 +81,7 @@ export default function Translate() {
 
   return (
     <>
+      <TranslateHeader/>
       <form className={styles.container} onSubmit={handleSubmit}>
         <div className={styles.fields}>
           <div className={styles.request}>
@@ -109,9 +118,7 @@ export default function Translate() {
           </div>
         </div>
         <div className={styles.submit}>
-          <button type="submit">
-            Traduire
-          </button>
+          <button type="submit">Traduire</button>
           <div className={styles.status}>
             <div className={[styles.load].join(" ")}>
               <div className={styles["spinner"]}></div>

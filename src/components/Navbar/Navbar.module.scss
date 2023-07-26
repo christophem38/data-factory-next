@@ -9,6 +9,7 @@
   }
   a {
     width: fit-content;
+    cursor: pointer;
   }
 }
 
@@ -43,6 +44,7 @@
     padding: 0 clamp(20px, 1rem, 10%);
   }
   li {
+    cursor: pointer;
     color: var(--text-color);
   }
 

@@ -1,1 +1,25 @@
+.home-container {
+  width: 75%;
+  margin-left: 12.5%;
+  margin-top: 2rem;
+}
+.home-container h1,
+.home-container h2 {
+  margin-bottom: 1rem;
+}
+.home-container h1 {
+  font-weight: 400;
+}
+.home-container p {
+  line-height: 177%;
+  width: 65%;
+}
+.home-container h2 {
+  font-weight: 200;
+}
 
+.title {
+  font-size: clamp(1rem, 3vw, 1.3rem);
+}
+
+/*# sourceMappingURL=acceuil.module.css.map */

@@ -42,6 +42,11 @@
   resize: none;
   margin-bottom: 0.75rem;
 }
+.container .select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .container .select-container select {
   padding: 0.75rem;
   margin: 1rem 0;
@@ -52,21 +57,6 @@
 .container label {
   height: fit-content;
   padding-bottom: 1rem;
-}
-.container button {
-  margin-right: 1rem;
-  border: none;
-  padding: 0.5rem 0.75rem;
-  font-size: clamp(0.75rem, 3vw, 1rem);
-  border-radius: clamp(0.5rem, 0.3vw, 0.75rem);
-  font-weight: 700;
-  background-color: rgb(0, 129, 201);
-  color: whitesmoke;
-  width: fit-content;
-  height: fit-content;
-}
-.container button:hover {
-  background-color: rgba(0, 129, 201, 0.7);
 }
 
 .spinner {

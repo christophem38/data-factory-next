@@ -10,6 +10,7 @@
 }
 .navbar a {
   width: fit-content;
+  cursor: pointer;
 }
 
 .primary-nav {
@@ -45,6 +46,7 @@
   padding: 0 clamp(20px, 1rem, 10%);
 }
 .navlist-container li {
+  cursor: pointer;
   color: var(--text-color);
 }
 .navlist-container li:hover {
