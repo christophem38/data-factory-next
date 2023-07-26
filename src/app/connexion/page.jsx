@@ -43,7 +43,7 @@ const setToken = async (token, credentials) => {
     );
     const response = await resp.json();
     response.id ? setUserDetails(response) : toggleStatusUI("initial");
-    window.location.assign('/')
+    window.location.assign("/");
   } catch (err) {
     console.log(err);
     toggleStatusUI("initial");
@@ -95,7 +95,7 @@ export default function Page() {
       </div>
       <div className={styles.form}>
         <div className={styles.username}>
-          <label htmlFor="username">Nom d'utilisateur :</label>
+          <label htmlFor="username">Nom d&#39;utilisateur :</label>
           <input
             type="text"
             required={true}
