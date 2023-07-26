@@ -14,9 +14,8 @@ const logoutUser = () => {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  var token
   useEffect(() => {
-    var token
     if (typeof window != undefined) {
       window.addEventListener("resize", (e) => {
         token = localStorage.getItem('auth_token')
