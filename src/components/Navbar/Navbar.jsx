@@ -16,8 +16,10 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
+    var token
     if (typeof window != undefined) {
       window.addEventListener("resize", (e) => {
+        token = localStorage.getItem('auth_token')
         let width = e.target.innerWidth;
         if (width > 980) setIsOpen(false);
       });
@@ -40,14 +42,14 @@ export default function Navbar() {
             <a href="/traducteur">
               <li>Traducteur</li>
             </a>
-            {localStorage.getItem("auth_token") && (
+            {token && (
               <a onClick={logoutUser}>
                 <li>
                   <Image src={logout} height={25} alt="deconnexion" />
                 </li>
               </a>
             )}
-            {!localStorage.getItem("auth_token") && (
+            {!token && (
               <a href="/connexion">
                 <li>Se connecter</li>
               </a>
@@ -67,12 +69,12 @@ export default function Navbar() {
                 <a href="/traducteur">
                   <li>Traducteur</li>
                 </a>
-                {localStorage.getItem("auth_token") && (
+                {token && (
                   <a onClick={logoutUser}>
                     <li>Déconnexion</li>
                   </a>
                 )}
-                {!localStorage.getItem("auth_token") && (
+                {!token && (
                   <a href="/connexion">
                     <li>Connexion</li>
                   </a>
